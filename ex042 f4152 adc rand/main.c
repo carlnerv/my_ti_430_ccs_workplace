@@ -27,7 +27,7 @@ unsigned long msequ(void)
         temp &= (temp -1) ; // Çå³ý×îµÍÎ»µÄ1
     }
 
-    c %= 2;
+    c &= 1;
 
     _mseed = (_mseed << 1) + c;
 
@@ -43,6 +43,8 @@ void Clock_init(void);
 int main(void)
 {
 	char adcdata[17];
+	unsigned long tmseed,tmchaeq;
+	unsigned int tmlength;
 	WDTCTL = WDTPW + WDTHOLD;                 // Stop WDT
 	Sys_init();
 
@@ -59,7 +61,7 @@ int main(void)
 	// srand(ADC10MEM & 0x0f);
 
 	tmseed = 0x01;
-	tmchaeq = 0100003;
+	tmchaeq = 0x8003;
 	tmlength = 15;
 	smseq(tmseed,tmchaeq,tmlength);
 
@@ -69,7 +71,7 @@ int main(void)
 
 		// adcdata = (signed char)ADC10MEM;
 
-		sprintf(adcdata, "%6d", msequ());
+		sprintf(adcdata, "%6d", (unsigned int)msequ());
 		// sprintf(adcdata, "%4x", ADC10MEM);
 
 		LCD_write_str(0, 1, adcdata);
