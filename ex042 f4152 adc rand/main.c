@@ -71,7 +71,7 @@ int main(void)
 
 		// adcdata = (signed char)ADC10MEM;
 
-		sprintf(adcdata, "%6d", (unsigned int)msequ());
+		sprintf(adcdata, "%6d", msequ());
 		// sprintf(adcdata, "%4x", ADC10MEM);
 
 		LCD_write_str(0, 1, adcdata);
