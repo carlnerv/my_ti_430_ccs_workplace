@@ -1,10 +1,15 @@
 # ignore
-/
+
+/*/.launches/
+/*/.settings/
+/*/Debug/
+/*/targetConfigs/
+
 *.bak
 .ccsproject
 .cproject
 .project
-.cmd
+*.cmd
 
 !*.c
 !*.h
